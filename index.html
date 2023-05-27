@@ -11,11 +11,11 @@
     </style>
 </head>
 <body>
-    <h1>Cryptograph Puzzle</h1>
+    <h1>Puzzle time!</h1>
     <div id="puzzle">
-        <h2>Decrypt the Message</h2>
-        <p>Decrypt the following message to proceed:</p>
-        <p id="encryptedMessage">Jwi aqw yjcp aqtp vcf</p>
+        <h2>I promise to...</h2>
+        <p>Hmm, this doesn't look right. Can you decrypt this to find out what it means?</p>
+        <p id="encryptedMessage">jwi aqw yjgp aqw ctg ucf</p>
         <p>Clue: You may have to "shift" your thinking a little ;)</p>
         <input type="text" id="decryptionInput" placeholder="Enter your answer">
         <button onclick="checkAnswer()">Submit</button>
@@ -49,7 +49,7 @@
             if (decryptionInput === decryptedMessage) {
                 result.textContent = "Congratulations! You have decrypted the message: " + decryptedMessage;
             } else {
-                result.textContent = "Oops! Try again.";
+                result.textContent = "Oops, that's not it. Try again."
             }
         }
     </script>
