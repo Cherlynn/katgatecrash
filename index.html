@@ -1,1 +1,58 @@
-<h1>Hello world!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cryptograph Puzzle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cryptograph Puzzle</h1>
+    <div id="puzzle">
+        <h2>Decrypt the Message</h2>
+        <p>Decrypt the following message to proceed further in the gatecrash:</p>
+        <p id="encryptedMessage">Jwi aqw yjcp aqtp vcf</p>
+        <p>Clue: Think about the alphabet and how it can help you unlock the message.</p>
+        <input type="text" id="decryptionInput" placeholder="Enter your answer">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            var encryptedMessage = document.getElementById("encryptedMessage").textContent;
+            var decryptionInput = document.getElementById("decryptionInput").value.toLowerCase();
+
+            // Decrypt the message
+            var decryptedMessage = "";
+            for (var i = 0; i < encryptedMessage.length; i++) {
+                if (encryptedMessage[i] === " ") {
+                    decryptedMessage += " ";
+                } else {
+                    var charCode = encryptedMessage.charCodeAt(i);
+                    if (charCode >= 99 && charCode <= 122) {
+                        charCode -= 2;
+                    } else if (charCode === 97) {
+                        charCode = 121; // Wrap around from 'a' to 'y'
+                    } else if (charCode === 98) {
+                        charCode = 122; // Wrap around from 'b' to 'z'
+                    }
+                    decryptedMessage += String.fromCharCode(charCode);
+                }
+            }
+
+            var result = document.getElementById("result");
+            if (decryptionInput === decryptedMessage) {
+                result.textContent = "Congratulations! You have decrypted the message: " + decryptedMessage;
+            } else {
+                result.textContent = "Oops! Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
+
